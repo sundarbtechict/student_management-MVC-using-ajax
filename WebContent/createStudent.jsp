@@ -1,5 +1,12 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	
 <div id="getForm">
-	<div class="container">
+
+<a href='<c:url value="/" />'> &lt Back</a>
+<br/>
+<br/>
+
+	<div>
 		<h4 style='color: #000080;'>Enter your full details:</h4>
 		<form class="form-inline" id="myForm" onsubmit="return saveStudent()">
 			<table class="table table-striped">
@@ -30,8 +37,8 @@
 				</tr>
 			</table>
 			<div style="float: right; right: 10%;">
-				<input type="submit" class="btn btn-info"  value="save">
-				<a href="./index.jsp" class="btn btn-info">cancel</a>
+				<input type="submit" class="btn btn-info" value="save"> <a
+					href="./index.jsp" class="btn btn-info">cancel</a>
 			</div>
 		</form>
 	</div>

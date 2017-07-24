@@ -22,7 +22,12 @@
 	</c:if>
 	
 	<br><br>
-	<div class="container">
+	
+	<a href='<c:url value="/" />'> &lt Back</a>
+	<br/>
+	<br/>
+	
+	<div>
 	<form class="form-inline" id="myForm" onsubmit="return updateStudent()">
 		<table class="table table-striped">
 			<tr>

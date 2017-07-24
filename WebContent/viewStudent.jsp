@@ -23,7 +23,11 @@
 	
 	<br><br>
 
-	<div class="container">
+	<a href='<c:url value="/" />'> &lt Back</a>
+	<br/>
+	<br/>
+	
+	<div>
 			<table class="table table-striped">
 				<tr>
 					<th>Register no:</th>
@@ -50,6 +54,5 @@
 					<td><c:out value="${student.getMobile()}"/></td>
 				</tr>
 			</table>
-		<a href='./././index.jsp'> Back</a>
 	</div>
 </div>
