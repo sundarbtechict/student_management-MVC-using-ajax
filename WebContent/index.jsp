@@ -12,7 +12,7 @@
 
 
 <!--  CSS and JS imports -->
-<jsp:include page="/common/allImports.jsp" />
+<jsp:include page="/jsp/common/allImports.jsp" />
 
 
 </head>

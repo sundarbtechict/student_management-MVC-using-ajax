@@ -5,7 +5,7 @@
 
 
 <!--  CSS and JS imports -->
-<jsp:include page="/common/status.jsp" />
+<jsp:include page="/jsp/common/status.jsp" />
 
 
 <div>

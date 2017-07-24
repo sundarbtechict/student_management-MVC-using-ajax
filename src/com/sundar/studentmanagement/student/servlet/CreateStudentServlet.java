@@ -34,7 +34,7 @@ public class CreateStudentServlet extends HttpServlet {
 		System.out.println("HELLO: ");
 		
 		ServletContext context= getServletContext();
-		RequestDispatcher rd= context.getRequestDispatcher("/student/createStudent.jsp");
+		RequestDispatcher rd= context.getRequestDispatcher("/jsp/student/createStudent.jsp");
 		rd.forward(request, response);
 	}
 

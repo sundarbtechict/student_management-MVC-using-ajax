@@ -52,7 +52,7 @@ public class GetAllStudentsServlet extends HttpServlet {
 		}
 
 		ServletContext context = getServletContext();
-		RequestDispatcher rd = context.getRequestDispatcher("/student/getAllStudents.jsp");
+		RequestDispatcher rd = context.getRequestDispatcher("/jsp/student/getAllStudents.jsp");
 		rd.forward(request, response);
 	}
 

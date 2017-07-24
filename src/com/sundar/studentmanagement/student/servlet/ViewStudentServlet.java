@@ -47,7 +47,7 @@ public class ViewStudentServlet extends HttpServlet {
 				System.out.println(" hi");
 			}
 		ServletContext context = getServletContext();
-		RequestDispatcher rd = context.getRequestDispatcher("/student/viewStudent.jsp");
+		RequestDispatcher rd = context.getRequestDispatcher("/jsp/student/viewStudent.jsp");
 		System.out.println(" hi");
 		rd.forward(request, response);
 

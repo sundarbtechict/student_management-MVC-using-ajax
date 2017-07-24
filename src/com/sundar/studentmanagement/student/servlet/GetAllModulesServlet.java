@@ -52,7 +52,7 @@ public class GetAllModulesServlet extends HttpServlet {
 		}
 
 		ServletContext context = getServletContext();
-		RequestDispatcher rd = context.getRequestDispatcher("/common/getAllModules.jsp");
+		RequestDispatcher rd = context.getRequestDispatcher("/jsp/common/getAllModules.jsp");
 		rd.forward(request, response);
 	}
 
