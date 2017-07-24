@@ -1,25 +1,22 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="com.sundar.studentmanagement.student.vo.*"%>
 
 <div id="getAllStudents">
 
-	<c:if test="${status.getStatusCode() != null}">
-		<c:if test="${status.getStatusCode()=='Success'}">
+	<c:if test="${status.statusCode != null}">
+		<c:if test="${status.statusCode=='Success'}">
 			<div class="alert alert-success alert-dismissable"
 				style="text-align: center;">
 				<a href="#" class="close" data-dismiss="alert">×</a> <strong><c:out
-						value="${status.getStatusCode()}" /></strong>
-				<c:out value="${status.getStatusMsg()}" />
+						value="${status.statusCode}" /></strong>
+				<c:out value="${status.statusMsg}" />
 			</div>
 		</c:if>
-		<c:if test="${status.getStatusCode() == 'Problem'}">
+		<c:if test="${status.statusCode == 'Problem'}">
 			<div class="alert alert-warning alert-dismissable"
 				style="text-align: center;">
 				<a href="#" class="close" data-dismiss="alert">×</a> <strong><c:out
-						value="${status.getStatusCode()}" /></strong>
-				<c:out value="${status.getStatusMsg()}" />
+						value="${status.statusCode}" /></strong>
+				<c:out value="${status.statusMsg}" />
 			</div>
 		</c:if>
 	</c:if>
@@ -48,18 +45,18 @@
 				</tr>
 				<c:forEach items="${studentList}" var="st">
 					<tr>
-						<td><c:out value="${st.getRegNo()}"></c:out></td>
-						<td><c:out value="${st.getName()}"></c:out></td>
-						<td><c:out value="${st.getDob()}"></c:out></td>
-						<td><c:out value="${st.getDept()}"></c:out></td>
-						<td><c:out value="${st.getEmail()}"></c:out></td>
-						<td><c:out value="${st.getMobile()}"></c:out></td>
+						<td><c:out value="${st.regNo}"></c:out></td>
+						<td><c:out value="${st.name}"></c:out></td>
+						<td><c:out value="${st.dob}"></c:out></td>
+						<td><c:out value="${st.dept}"></c:out></td>
+						<td><c:out value="${st.email}"></c:out></td>
+						<td><c:out value="${st.mobile}"></c:out></td>
 						<td><a href="#"
-							onclick="getViewStudentPage(<c:out value="${st.getRegNo()}"></c:out>)">View</a></td>
+							onclick="getViewStudentPage(<c:out value="${st.regNo}"></c:out>)">View</a></td>
 						<td><a href="#"
-							onclick="getUpdateStudentPage(<c:out value="${st.getRegNo()}"></c:out>)">Edit</a></td>
+							onclick="getUpdateStudentPage(<c:out value="${st.regNo}"></c:out>)">Edit</a></td>
 						<td><a href="#"
-							onclick="deleteStudent(<c:out value="${st.getRegNo()}"></c:out>)">Delete</a></td>
+							onclick="deleteStudent(<c:out value="${st.regNo}"></c:out>)">Delete</a></td>
 					</tr>
 				</c:forEach>
 			</table>
