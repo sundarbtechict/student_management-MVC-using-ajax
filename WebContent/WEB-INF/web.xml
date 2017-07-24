@@ -25,6 +25,19 @@
 	
 	
 	<servlet>
+		<display-name>GetAllModulesServlet</display-name>
+		<servlet-name>GetAllModulesServlet</servlet-name>
+		<servlet-class>com.sundar.studentmanagement.student.servlet.GetAllModulesServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetAllModulesServlet</servlet-name>
+		<url-pattern>/getAllModules</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+	
+	<servlet>
 		<display-name>GetAllStudentsServlet</display-name>
 		<servlet-name>GetAllStudentsServlet</servlet-name>
 		<servlet-class>com.sundar.studentmanagement.student.servlet.GetAllStudentsServlet</servlet-class>

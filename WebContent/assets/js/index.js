@@ -4,7 +4,21 @@ $(document).ready(function(){
 	// Execute on Page Load
 	
 	// Get Home Page
-	getAllStudents();
+	getAllModules();
 	
 	
 });
+
+
+
+function getAllModules()
+{
+	$.ajax({
+        url: appContextPath + "/getAllModules",
+        method: "GET",
+        success: function (result) 
+        {
+            $("#content").html(result);
+        }
+    });
+}

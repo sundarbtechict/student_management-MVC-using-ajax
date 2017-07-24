@@ -22,6 +22,9 @@
 	</c:if>
 	
 	<br>
+	
+	
+<a href='#' onclick="getAllModules();"> &lt Back</a> <br/><br/>
 
 	<div>
 		<button class="btn btn-primary pull-right"
