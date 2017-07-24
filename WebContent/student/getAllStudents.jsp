@@ -4,32 +4,28 @@
 <%@ page import="com.sundar.studentmanagement.student.vo.*"%>
 
 <div id="getAllStudents">
-	<button class="btn btn-primary" style="float: right;"
-		onclick="getCreateStudentPage()">
-		<span class="glyphicon glyphicon-plus"></span> Create Student
-	</button>
-	<br>
-	<br>
+	<button class="btn btn-primary" style="float: right;" onclick="createStudent()"><span
+					class="glyphicon glyphicon-plus"></span> Create Student</button>
+					<br><br>
 	<c:if test="${status.getStatusCode() != null}">
 		<c:if test="${status.getStatusCode()=='Success'}">
-			<div class="alert alert-success alert-dismissable"
-				style="text-align: center;">
-				<a href="#" class="close" data-dismiss="alert">×</a> <strong><c:out
-						value="${status.getStatusCode()}" /></strong>
-				<c:out value="${status.getStatusMsg()}" />
-			</div>
-		</c:if>
+		<div class="alert alert-success alert-dismissable" style="text-align:center;">
+			<a href="#" class="close" data-dismiss="alert">×</a> <strong><c:out
+					value="${status.getStatusCode()}" /></strong>
+			<c:out value="${status.getStatusMsg()}" />
+		</div>
+	</c:if>
 		<c:if test="${status.getStatusCode() == 'Problem'}">
-			<div class="alert alert-warning alert-dismissable"
-				style="text-align: center;">
-				<a href="#" class="close" data-dismiss="alert">×</a> <strong><c:out
-						value="${status.getStatusCode()}" /></strong>
-				<c:out value="${status.getStatusMsg()}" />
-			</div>
+		<div class="alert alert-warning alert-dismissable" style="text-align:center;" >
+			<a href="#" class="close" data-dismiss="alert">×</a> <strong><c:out
+					value="${status.getStatusCode()}" /></strong>
+			<c:out value="${status.getStatusMsg()}" />
+		</div>
 		</c:if>
 	</c:if>
-
-	<br> <br>
+	
+	<br>
+	<br>
 	<div>
 		<div class="table-responsive">
 			<table class="table table-striped table-bordered">
@@ -50,12 +46,12 @@
 						<td><c:out value="${st.getDept()}"></c:out></td>
 						<td><c:out value="${st.getEmail()}"></c:out></td>
 						<td><c:out value="${st.getMobile()}"></c:out></td>
-						<td><a href="#"
-							onclick="getViewStudentPage(<c:out value="${st.getRegNo()}"></c:out>)">View</a></td>
-						<td><a href="#"
-							onclick="getUpdateStudentPage(<c:out value="${st.getRegNo()}"></c:out>)">Edit</a></td>
-						<td><a href="#"
-							onclick="deleteStudent(<c:out value="${st.getRegNo()}"></c:out>)">Delete</a></td>
+						<td><a
+							href="#" onclick="viewStudent(<c:out value="${st.getRegNo()}"></c:out>)">View</a></td>
+						<td><a
+							href="#" onclick="editStudent(<c:out value="${st.getRegNo()}"></c:out>)">Edit</a></td>
+						<td><a
+							href="#" onclick="deleteStudent(<c:out value="${st.getRegNo()}"></c:out>)">Delete</a></td>
 					</tr>
 				</c:forEach>
 			</table>
