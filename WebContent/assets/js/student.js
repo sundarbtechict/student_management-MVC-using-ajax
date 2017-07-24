@@ -1,4 +1,18 @@
 
+function getAllStudents()
+{
+	$.ajax({
+        url: appContextPath + "/getAllStudents",
+        method: "GET",
+        success: function (result) 
+        {
+            $("#content").html(result);
+        }
+    });
+}
+
+
+
 function getCreateStudentPage()
 {
 	// console.log("hi create");

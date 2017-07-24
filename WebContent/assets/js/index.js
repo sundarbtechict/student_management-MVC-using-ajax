@@ -4,14 +4,7 @@ $(document).ready(function(){
 	// Execute on Page Load
 	
 	// Get Home Page
-	$.ajax({
-        url: appContextPath + "/getAllStudents",
-        method: "GET",
-        success: function (result) 
-        {
-            $("#content").html(result);
-        }
-    });
+	getAllStudents();
 	
 	
 });

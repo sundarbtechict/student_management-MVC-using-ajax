@@ -2,7 +2,7 @@
 	
 <div id="getForm">
 
-<a href='<c:url value="/" />'> &lt Back</a>
+<a href='#' onclick="getAllStudents();"> &lt Back</a>
 <br/>
 <br/>
 
