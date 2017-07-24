@@ -56,7 +56,7 @@
 						<td><a href="#"
 							onclick="getUpdateStudentPage(<c:out value="${st.regNo}"></c:out>)">Edit</a></td>
 						<td><a href="#"
-							onclick="deleteStudent(<c:out value="${st.regNo}"></c:out>)">Delete</a></td>
+							onclick="confirmDeleteStudent(<c:out value="${st.regNo}"></c:out>)">Delete</a></td>
 					</tr>
 				</c:forEach>
 			</table>

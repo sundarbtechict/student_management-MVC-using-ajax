@@ -98,15 +98,24 @@ function updateStudent()
 	return false;
 }
 
+
+function confirmDeleteStudent(regNo)
+{
+	var isOkToDelete = confirm('Are you sure you want to delete Student (RegNo: '+ regNo +')');
+	if(isOkToDelete) {
+		deleteStudent(regNo);
+	}
+}
+
 function deleteStudent(regno)
 {
 	// console.log("hi delete");
 	$.ajax({
 		url: appContextPath + "/deleteStudent?regno="+regno,
-        method: "GET",
-        success: function (result) 
-        {
-            $("#content").html(result);
-        }
-    });
+		method: "GET",
+		success: function (result) 
+		{
+			$("#content").html(result);
+		}
+	});
 }
