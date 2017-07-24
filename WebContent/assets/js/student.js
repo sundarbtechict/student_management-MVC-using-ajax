@@ -1,5 +1,5 @@
 
-function createStudent()
+function getCreateStudentPage()
 {
 	// console.log("hi create");
 	$.ajax({
@@ -12,7 +12,9 @@ function createStudent()
         }
     });
 }
-function saveStudent()
+
+
+function createStudent()
 {
 	// console.log("hi save");
 	$.ajax({
@@ -27,7 +29,9 @@ function saveStudent()
 	return false;
 }
 
-function viewStudent(regno)
+
+
+function getViewStudentPage(regno)
 {
 	// console.log("hi view");
 	$.ajax({
@@ -44,11 +48,13 @@ function viewStudent(regno)
         }
     });
 }
-function editStudent(regno)
+
+
+function getUpdateStudentPage(regno)
 {
 	// console.log("hi edit");
 	$.ajax({
-		url: appContextPath + "/editStudent?regno="+regno,
+		url: appContextPath + "/updateStudent?regno="+regno,
         method: "GET",
         success: function (result) 
         {
@@ -61,6 +67,8 @@ function editStudent(regno)
         }
     });
 }
+
+
 function updateStudent()
 {
 	// console.log("hi update");

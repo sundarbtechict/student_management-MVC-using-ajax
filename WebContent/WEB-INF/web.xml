@@ -45,16 +45,7 @@
 		<servlet-name>ViewStudentServlet</servlet-name>
 		<url-pattern>/viewStudent</url-pattern>
 	</servlet-mapping>
-	<servlet>
-		<description></description>
-		<display-name>EditStudentServlet</display-name>
-		<servlet-name>EditStudentServlet</servlet-name>
-		<servlet-class>com.sundar.studentmanagement.student.servlet.EditStudentServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>EditStudentServlet</servlet-name>
-		<url-pattern>/editStudent</url-pattern>
-	</servlet-mapping>
+
 	<servlet>
 		<description></description>
 		<display-name>UpdateStudentServlet</display-name>

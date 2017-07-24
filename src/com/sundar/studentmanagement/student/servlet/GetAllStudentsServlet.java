@@ -21,45 +21,47 @@ import com.sundar.studentmanagement.student.service.StudentServiceImpl;
  */
 public class GetAllStudentsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public GetAllStudentsServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-			PrintWriter out = response.getWriter();
-			StudentServiceImpl s=StudentServiceImpl.getStudentService();
-			Map<String,Object> map=s.getAllStudents();
-				@SuppressWarnings("unchecked")
-				List<StudentVO> studentList=(List<StudentVO>) map.get("StudentList");
-				StatusVO statusVO=(StatusVO) map.get("StatusVO");
-				request.setAttribute("studentList",studentList);
-				if(statusVO.getStatusCode() =="Problems")
-					request.setAttribute("status",statusVO);
-				else
-				{
-					StatusVO statusVO2=(StatusVO)request.getAttribute("status");
-					request.setAttribute("status",statusVO2);
-				}
-			out.println("hi");			
-			ServletContext context= getServletContext();
-			RequestDispatcher rd= context.getRequestDispatcher("/student/getAllStudents.jsp");
-			rd.forward(request, response);
-			out.println("sundar");
+	public GetAllStudentsServlet() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		
+		StudentServiceImpl s = StudentServiceImpl.getStudentService();
+		Map<String, Object> map = s.getAllStudents();
+		@SuppressWarnings("unchecked")
+		List<StudentVO> studentList = (List<StudentVO>) map.get("StudentList");
+		StatusVO statusVO = (StatusVO) map.get("StatusVO");
+		request.setAttribute("studentList", studentList);
+		if (statusVO.getStatusCode() == "Problems")
+			request.setAttribute("status", statusVO);
+		else {
+			StatusVO statusVO2 = (StatusVO) request.getAttribute("status");
+			request.setAttribute("status", statusVO2);
+		}
+
+		ServletContext context = getServletContext();
+		RequestDispatcher rd = context.getRequestDispatcher("/student/getAllStudents.jsp");
+		rd.forward(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
