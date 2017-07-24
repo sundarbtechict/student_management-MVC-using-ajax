@@ -55,7 +55,7 @@ public class CreateStudentServlet extends HttpServlet {
 		StatusVO statusVO=s.createStudent(st);
 			request.setAttribute("status", statusVO);
 		ServletContext context= getServletContext();
-		RequestDispatcher rd= context.getRequestDispatcher("/indexOfStudent");
+		RequestDispatcher rd= context.getRequestDispatcher("/getAllStudents");
 		rd.forward(request, response);
 	}
 }

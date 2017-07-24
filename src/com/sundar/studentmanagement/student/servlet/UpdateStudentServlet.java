@@ -51,7 +51,7 @@ public class UpdateStudentServlet extends HttpServlet {
 			StatusVO statusVO=s.updateStudent(st);
 			request.setAttribute("status", statusVO);
 			ServletContext context= getServletContext();
-			RequestDispatcher rd= context.getRequestDispatcher("/indexOfStudent");
+			RequestDispatcher rd= context.getRequestDispatcher("/getAllStudents");
 			rd.forward(request, response);
 		doGet(request, response);
 	}

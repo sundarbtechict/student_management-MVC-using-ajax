@@ -9,6 +9,8 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
+	
+	
 	<servlet>
 		<description></description>
 		<display-name>IndexStudentServlet</display-name>
@@ -19,6 +21,20 @@
 		<servlet-name>IndexStudentServlet</servlet-name>
 		<url-pattern>/indexOfStudent</url-pattern>
 	</servlet-mapping>
+	
+	
+	
+	<servlet>
+		<display-name>GetAllStudentsServlet</display-name>
+		<servlet-name>GetAllStudentsServlet</servlet-name>
+		<servlet-class>com.sundar.studentmanagement.student.servlet.GetAllStudentsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetAllStudentsServlet</servlet-name>
+		<url-pattern>/getAllStudents</url-pattern>
+	</servlet-mapping>
+	
+	
 	<servlet>
 		<description></description>
 		<display-name>ViewStudentServlet</display-name>

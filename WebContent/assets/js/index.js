@@ -5,7 +5,7 @@ $(document).ready(function(){
 	
 	// Get Home Page
 	$.ajax({
-        url: appContextPath + "/indexOfStudent",
+        url: appContextPath + "/getAllStudents",
         method: "GET",
         success: function (result) 
         {

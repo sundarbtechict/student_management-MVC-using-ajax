@@ -1,6 +1,9 @@
 package com.sundar.studentmanagement.student.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -9,19 +12,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.sundar.studentmanagement.student.service.StudentServiceImpl;
 import com.sundar.studentmanagement.student.vo.StatusVO;
+import com.sundar.studentmanagement.student.vo.StudentVO;
+import com.sundar.studentmanagement.student.service.StudentServiceImpl;
 
 /**
- * Servlet implementation class DeleteStudentServlet
+ * Servlet implementation class IndexStudentServlet
  */
-public class DeleteStudentServlet extends HttpServlet {
+public class GetAllStudentsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteStudentServlet() {
+    public GetAllStudentsServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,15 +35,25 @@ public class DeleteStudentServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String regno = request.getParameter("regno");
-		System.out.println(regno);
+			PrintWriter out = response.getWriter();
 			StudentServiceImpl s=StudentServiceImpl.getStudentService();
-			StatusVO statusVO=s.deleteStudent(regno);
-			request.setAttribute("status", statusVO);
+			Map<String,Object> map=s.getAllStudents();
+				@SuppressWarnings("unchecked")
+				List<StudentVO> studentList=(List<StudentVO>) map.get("StudentList");
+				StatusVO statusVO=(StatusVO) map.get("StatusVO");
+				request.setAttribute("studentList",studentList);
+				if(statusVO.getStatusCode() =="Problems")
+					request.setAttribute("status",statusVO);
+				else
+				{
+					StatusVO statusVO2=(StatusVO)request.getAttribute("status");
+					request.setAttribute("status",statusVO2);
+				}
+			out.println("hi");			
 			ServletContext context= getServletContext();
-			RequestDispatcher rd= context.getRequestDispatcher("/getAllStudents");
+			RequestDispatcher rd= context.getRequestDispatcher("/student/getAllStudents.jsp");
 			rd.forward(request, response);
-
+			out.println("sundar");
 	}
 
 	/**
