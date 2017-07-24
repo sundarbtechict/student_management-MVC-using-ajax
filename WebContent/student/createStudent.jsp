@@ -8,7 +8,7 @@
 
 	<div>
 		<h4 style='color: #000080;'>Enter Student details:</h4>
-		<form class="form-inline" id="myForm" onsubmit="return saveStudent()">
+		<form class="form-inline" id="myForm" onsubmit="return createStudent()">
 			<table class="table table-striped">
 				<tr>
 					<th>Name:</th>
