@@ -32,6 +32,10 @@ public class CreateStudentServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		System.out.println("HELLO: ");
+		
+		ServletContext context= getServletContext();
+		RequestDispatcher rd= context.getRequestDispatcher("/student/createStudent.jsp");
+		rd.forward(request, response);
 	}
 
 	/**

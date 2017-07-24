@@ -21,7 +21,7 @@
 <nav class="navbar navbar-default navbar-inverse">
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="./././index.jsp">Student Management</a>
+			<a class="navbar-brand" href='<c:url value="/" />'>Student Management</a>
 		</div>
 	</div>
 	</nav>

@@ -51,7 +51,7 @@ public class IndexStudentServlet extends HttpServlet {
 				}
 			out.println("hi");			
 			ServletContext context= getServletContext();
-			RequestDispatcher rd= context.getRequestDispatcher("/././getAllStudents.jsp");
+			RequestDispatcher rd= context.getRequestDispatcher("/student/getAllStudents.jsp");
 			rd.forward(request, response);
 			out.println("sundar");
 	}

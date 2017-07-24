@@ -18,7 +18,7 @@ function createStudent()
 {
 	console.log("hi create");
 	$.ajax({
-        url: "././createStudent.jsp",
+        url: "./createStudent",
         success: function (result) 
         {
             var htmlFiltered = $(result).filter("#getForm");

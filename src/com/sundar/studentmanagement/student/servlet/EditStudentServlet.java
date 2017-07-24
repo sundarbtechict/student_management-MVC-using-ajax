@@ -44,7 +44,7 @@ public class EditStudentServlet extends HttpServlet {
 				request.setAttribute("status", statusVO);
 			}
 			ServletContext context= getServletContext();
-			RequestDispatcher rd= context.getRequestDispatcher("/updateStudent.jsp");
+			RequestDispatcher rd= context.getRequestDispatcher("/student/updateStudent.jsp");
 			rd.forward(request, response);
 
 	}
