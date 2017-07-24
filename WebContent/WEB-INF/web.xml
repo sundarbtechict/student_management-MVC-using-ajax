@@ -12,19 +12,6 @@
 	
 	
 	<servlet>
-		<description></description>
-		<display-name>IndexStudentServlet</display-name>
-		<servlet-name>IndexStudentServlet</servlet-name>
-		<servlet-class>com.sundar.studentmanagement.student.servlet.IndexStudentServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>IndexStudentServlet</servlet-name>
-		<url-pattern>/indexOfStudent</url-pattern>
-	</servlet-mapping>
-	
-	
-	
-	<servlet>
 		<display-name>GetAllModulesServlet</display-name>
 		<servlet-name>GetAllModulesServlet</servlet-name>
 		<servlet-class>com.sundar.studentmanagement.student.servlet.GetAllModulesServlet</servlet-class>
@@ -34,8 +21,7 @@
 		<url-pattern>/getAllModules</url-pattern>
 	</servlet-mapping>
 	
-	
-	
+
 	
 	<servlet>
 		<display-name>GetAllStudentsServlet</display-name>
