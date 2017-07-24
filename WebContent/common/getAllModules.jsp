@@ -9,7 +9,7 @@
 
 		<div class="list-group">
 
-			<a href="#" class="list-group-item disabled">All Options</a> 
+			<a href="#" class="list-group-item disabled">App Menu:</a> 
 			
 			<a href='#' class="list-group-item" onclick="getAllStudents();">
 				Student Management </a> 

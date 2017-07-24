@@ -1,49 +1,93 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-	
+
 <div id="getForm">
 
-<a href='#' onclick="getAllStudents();"> &lt Back</a>
+	<a href='#' onclick="getAllStudents();"> &lt Back</a> <br/><br/>
 
-<h2>Create Student :</h2>
+	<div class="panel panel-default">
+		<div class="panel-heading">Create Student :</div>
+		<div class="panel-body">
 
-	<div>
-		<form class="form-inline" id="myForm" onsubmit="return createStudent();">
-			<table class="table table-striped">
-				<tr>
-					<th>Name:</th>
-					<td><input type="text" class="form-control" name="name"></td>
-				</tr>
-				<tr>
-					<th>Register No:</th>
-					<td><input type="text" class="form-control" name="regno"></td>
-				</tr>
-				<tr>
-					<th>DOB:</th>
-					<td><input type="date" class="form-control" name="dob"
-						max="2000-12-31"></td>
-				</tr>
-				<tr>
-					<th>Email:</th>
-					<td><input type="email" class="form-control" name="email"></td>
-				</tr>
-				<tr>
-					<th>Mobile:</th>
-					<td><input type="text" class="form-control" name="mobile"></td>
-				</tr>
-				<tr>
-					<th>Department:</th>
-					<td><input type="text" class="form-control" name="dept"></td>
-				</tr>
-			</table>
-			
-			<div>
-				<div class="pull-right">
-									
-					<button type="button" class="btn btn-default" onclick="getAllStudents();"> Cancel </button>
-					<button type="submit" class="btn btn-primary"> Save </button>
-					
+			<form class="form-horizontal" id="myForm"
+				onsubmit="return createStudent();">
+
+
+				<div class="form-group">
+					<label for="name" class="col-sm-2 control-label">Name:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="name" id="name">
+					</div>
 				</div>
-			</div>
-		</form>
+
+
+
+
+				<div class="form-group">
+					<label for="regno" class="col-sm-2 control-label">Register
+						No:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="regno" id="regno">
+					</div>
+				</div>
+
+
+
+
+				<div class="form-group">
+					<label for="dob" class="col-sm-2 control-label">DOB:</label>
+					<div class="col-sm-10">
+						<input type="date" class="form-control" name="dob" id="dob"
+							max="2000-12-31">
+					</div>
+				</div>
+
+
+
+
+				<div class="form-group">
+					<label for="email" class="col-sm-2 control-label">Email:</label>
+					<div class="col-sm-10">
+						<input type="email" class="form-control" name="email" id="email">
+					</div>
+				</div>
+
+
+
+
+
+				<div class="form-group">
+					<label for="mobile" class="col-sm-2 control-label">Mobile:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="mobile" id="mobile">
+					</div>
+				</div>
+
+
+
+
+				<div class="form-group">
+					<label for="dept" class="col-sm-2 control-label">Department:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="dept" id="dept">
+					</div>
+				</div>
+
+
+
+
+				<div>
+					<div class="pull-right">
+
+						<button type="button" class="btn btn-default"
+							onclick="getAllStudents();">Cancel</button>
+						<button type="submit" class="btn btn-primary">Save</button>
+
+					</div>
+				</div>
+			</form>
+
+
+		</div>
 	</div>
+
 </div>
