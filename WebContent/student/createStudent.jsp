@@ -3,11 +3,10 @@
 <div id="getForm">
 
 <a href='#' onclick="getAllStudents();"> &lt Back</a>
-<br/>
-<br/>
+
+<h2>Create Student :</h2>
 
 	<div>
-		<h4 style='color: #000080;'>Enter Student details:</h4>
 		<form class="form-inline" id="myForm" onsubmit="return createStudent();">
 			<table class="table table-striped">
 				<tr>
@@ -36,9 +35,14 @@
 					<td><input type="text" class="form-control" name="dept"></td>
 				</tr>
 			</table>
-			<div style="float: right; right: 10%;">
-				<input type="submit" class="btn btn-info" value="save"> <a
-					href="./index.jsp" class="btn btn-info">cancel</a>
+			
+			<div>
+				<div class="pull-right">
+									
+					<button type="button" class="btn btn-default" onclick="getAllStudents();"> Cancel </button>
+					<button type="submit" class="btn btn-primary"> Save </button>
+					
+				</div>
 			</div>
 		</form>
 	</div>

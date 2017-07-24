@@ -2,29 +2,20 @@
 
 <div id="getAllStudents">
 
-	<c:if test="${status.statusCode != null}">
-		<c:if test="${status.statusCode=='Success'}">
-			<div class="alert alert-success alert-dismissable"
-				style="text-align: center;">
-				<a href="#" class="close" data-dismiss="alert">×</a> <strong><c:out
-						value="${status.statusCode}" /></strong>
-				<c:out value="${status.statusMsg}" />
-			</div>
-		</c:if>
-		<c:if test="${status.statusCode == 'Problem'}">
-			<div class="alert alert-warning alert-dismissable"
-				style="text-align: center;">
-				<a href="#" class="close" data-dismiss="alert">×</a> <strong><c:out
-						value="${status.statusCode}" /></strong>
-				<c:out value="${status.statusMsg}" />
-			</div>
-		</c:if>
-	</c:if>
-	
-	<br>
-	
-	
-<a href='#' onclick="getAllModules();"> &lt Back</a> <br/><br/>
+
+
+<!--  CSS and JS imports -->
+<jsp:include page="/common/status.jsp" />
+
+
+<div>
+
+<div class="pull-left">
+<a href='#' onclick="getAllModules();"> &lt Back</a>
+
+</div>
+<div class="pull-right">
+
 
 	<div>
 		<button class="btn btn-primary pull-right"
@@ -33,6 +24,12 @@
 		</button>
 	
 	</div>
+
+</div>
+
+</div>
+	
+
 	<br> <br>
 	<div>
 		<div class="table-responsive">
