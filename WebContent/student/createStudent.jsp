@@ -7,7 +7,7 @@
 <br/>
 
 	<div>
-		<h4 style='color: #000080;'>Enter your full details:</h4>
+		<h4 style='color: #000080;'>Enter Student details:</h4>
 		<form class="form-inline" id="myForm" onsubmit="return saveStudent()">
 			<table class="table table-striped">
 				<tr>
