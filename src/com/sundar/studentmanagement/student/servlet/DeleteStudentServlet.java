@@ -17,35 +17,38 @@ import com.sundar.studentmanagement.student.vo.StatusVO;
  */
 public class DeleteStudentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public DeleteStudentServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public DeleteStudentServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String regno = request.getParameter("regno");
-		System.out.println(regno);
-			StudentServiceImpl s=StudentServiceImpl.getStudentService();
-			StatusVO statusVO=s.deleteStudent(regno);
-			request.setAttribute("status", statusVO);
-			ServletContext context= getServletContext();
-			RequestDispatcher rd= context.getRequestDispatcher("/getAllStudents");
-			rd.forward(request, response);
+		String studentId = request.getParameter("studentId");
+		StudentServiceImpl s = StudentServiceImpl.getStudentService();
+		StatusVO statusVO = s.deleteStudent(studentId);
+		request.setAttribute("status", statusVO);
+		ServletContext context = getServletContext();
+		RequestDispatcher rd = context.getRequestDispatcher("/getAllStudents");
+		rd.forward(request, response);
 
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

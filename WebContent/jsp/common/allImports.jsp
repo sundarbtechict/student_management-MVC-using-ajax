@@ -3,7 +3,9 @@
 
 <!-- import: CSS -->
 <!-- plugin css-->
-<link href="./plugins/bootstrap.css" rel="stylesheet" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 
 <!-- app css -->
 <link href="./assets/css/styles.css" rel="stylesheet" />
@@ -11,8 +13,11 @@
 
 <!-- import: JS -->
 <!-- plugin js-->
-<script type="text/javascript" src="./plugins/jquery.2.2.3.min.js"></script>
-<script type="text/javascript" src="./plugins/bootstrap.min.js"></script>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
 <!-- app js -->

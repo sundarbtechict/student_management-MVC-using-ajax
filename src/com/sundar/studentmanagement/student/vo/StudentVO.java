@@ -6,24 +6,19 @@ public class StudentVO
 	/**
 	 * 
 	 */
-	private String regNo;
+	private String studentId;
 	private String name;
 	private String dob;
 	private String email;
 	private String mobile;
 	private String dept;
-	private boolean f=true;
-	public boolean isF() {
-		return f;
+	
+	
+	public String getStudentId() {
+		return studentId;
 	}
-	public void setF(boolean f) {
-		this.f = f;
-	}
-	public String getRegNo() {
-		return regNo;
-	}
-	public void setRegNo(String regNo) {
-		this.regNo = regNo;
+	public void setStudentId(String studentId) {
+		this.studentId = studentId;
 	}
 	public String getName() {
 		return name;

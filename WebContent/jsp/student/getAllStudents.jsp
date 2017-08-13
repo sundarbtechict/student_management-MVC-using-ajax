@@ -45,18 +45,18 @@
 				</tr>
 				<c:forEach items="${studentList}" var="st">
 					<tr>
-						<td><c:out value="${st.regNo}"></c:out></td>
+						<td><c:out value="${st.studentId}"></c:out></td>
 						<td><c:out value="${st.name}"></c:out></td>
 						<td><c:out value="${st.dob}"></c:out></td>
 						<td><c:out value="${st.dept}"></c:out></td>
 						<td><c:out value="${st.email}"></c:out></td>
 						<td><c:out value="${st.mobile}"></c:out></td>
 						<td><a href="#"
-							onclick="getViewStudentPage(<c:out value="${st.regNo}"></c:out>)">View</a></td>
+							onclick="getViewStudentPage(<c:out value="${st.studentId}"></c:out>)">View</a></td>
 						<td><a href="#"
-							onclick="getUpdateStudentPage(<c:out value="${st.regNo}"></c:out>)">Edit</a></td>
+							onclick="getUpdateStudentPage(<c:out value="${st.studentId}"></c:out>)">Edit</a></td>
 						<td><a href="#"
-							onclick="confirmDeleteStudent(<c:out value="${st.regNo}"></c:out>)">Delete</a></td>
+							onclick="confirmDeleteStudent(<c:out value="${st.studentId}"></c:out>)">Delete</a></td>
 					</tr>
 				</c:forEach>
 			</table>

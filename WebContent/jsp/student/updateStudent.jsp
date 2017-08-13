@@ -19,8 +19,8 @@
 						no:</label>
 					<div class="col-sm-10">
 
-						<input type="text" class="form-control" name="regno"
-							value=<c:out value="${student.regNo}"/> readonly>
+						<input type="text" class="form-control" name="studentId"
+							value=<c:out value="${student.studentId}"/> readonly>
 
 					</div>
 				</div>

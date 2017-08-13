@@ -13,7 +13,7 @@
 			<table class="table table-striped">
 				<tr>
 					<th>Register no:</th>
-					<td><c:out value="${student.regNo}" /></td>
+					<td><c:out value="${student.studentId}" /></td>
 				</tr>
 				<tr>
 					<th>Name:</th>

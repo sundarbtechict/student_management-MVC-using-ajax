@@ -35,16 +35,15 @@ public class UpdateStudentServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String regno = request.getParameter("regno");
-		System.out.println(regno);
+		String studentId = request.getParameter("studentId");
 		StudentServiceImpl s = StudentServiceImpl.getStudentService();
-		Map<String, Object> map = s.getStudentById(regno);
+		Map<String, Object> map = s.getStudentById(studentId);
 		StudentVO studentVO = (StudentVO) map.get("StudentVO");
 		StatusVO statusVO = (StatusVO) map.get("StatusVO");
-		if (studentVO.isF()) {
-			request.setAttribute("student", studentVO);
-			request.setAttribute("status", statusVO);
-		}
+	
+		request.setAttribute("student", studentVO);
+		request.setAttribute("status", statusVO);
+	
 		ServletContext context = getServletContext();
 		RequestDispatcher rd = context.getRequestDispatcher("/jsp/student/updateStudent.jsp");
 		rd.forward(request, response);
@@ -60,7 +59,7 @@ public class UpdateStudentServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		StudentVO st = new StudentVO();
 		st.setName(request.getParameter("name"));
-		st.setRegNo(request.getParameter("regno"));
+		st.setStudentId(request.getParameter("studentId"));
 		st.setDob(request.getParameter("dob"));
 		st.setEmail(request.getParameter("email"));
 		st.setMobile(request.getParameter("mobile"));

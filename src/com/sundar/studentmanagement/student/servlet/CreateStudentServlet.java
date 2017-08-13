@@ -46,7 +46,7 @@ public class CreateStudentServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		StudentVO st=new StudentVO();
 		st.setName(request.getParameter("name"));
-		st.setRegNo(request.getParameter("regno"));
+		st.setStudentId(request.getParameter("studentId"));
 		st.setDob(request.getParameter("dob"));
 		st.setEmail(request.getParameter("email"));
 		st.setMobile(request.getParameter("mobile"));

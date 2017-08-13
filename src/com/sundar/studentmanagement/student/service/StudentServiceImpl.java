@@ -22,10 +22,10 @@ public class StudentServiceImpl implements IStudentService{
 		StatusVO statusVO=studentDAO.createStudent(studentVO);
 		return statusVO;
 	}
-	public  Map<String,Object> getStudentById(String regno)
+	public  Map<String,Object> getStudentById(String studentId)
 	{
 		StudentDAOImpl studentDAO=StudentDAOImpl.getStudentDAO();
-		Map<String,Object> map=studentDAO.getStudentById(regno);
+		Map<String,Object> map=studentDAO.getStudentById(studentId);
 		return map;
 		
 	}
@@ -34,9 +34,9 @@ public class StudentServiceImpl implements IStudentService{
 		StatusVO statusVO=studentDAO.updateStudent(studentVO);
 		return statusVO;
 	}
-	public  StatusVO deleteStudent(String regno){
+	public  StatusVO deleteStudent(String studentId){
 		StudentDAOImpl studentDAO=StudentDAOImpl.getStudentDAO();
-		StatusVO statusVO=studentDAO.deleteStudent(regno);
+		StatusVO statusVO=studentDAO.deleteStudent(studentId);
 		return statusVO;
 	}
 	public  Map<String,Object> getAllStudents(){
