@@ -23,10 +23,10 @@
 
 
 				<div class="form-group">
-					<label for="studentId" class="col-sm-2 control-label">Register
+					<label for="regNo" class="col-sm-2 control-label">Register
 						No:</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" name="studentId" id="studentId">
+						<input type="text" class="form-control" name="regNo" id="regNo">
 					</div>
 				</div>
 

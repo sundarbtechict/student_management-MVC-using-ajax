@@ -12,8 +12,16 @@ public class StudentVO
 	private String email;
 	private String mobile;
 	private String dept;
+	private String regNo;
+
 	
 	
+	public String getRegNo() {
+		return regNo;
+	}
+	public void setRegNo(String regNo) {
+		this.regNo = regNo;
+	}
 	public String getStudentId() {
 		return studentId;
 	}

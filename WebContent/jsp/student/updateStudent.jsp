@@ -13,18 +13,30 @@
 			<form class="form-horizontal" id="myForm"
 				onsubmit="return updateStudent();">
 
-
 				<div class="form-group">
-					<label for="name" class="col-sm-2 control-label">Register
+					<label for="studentId" class="col-sm-2 control-label">studentId
 						no:</label>
 					<div class="col-sm-10">
 
-						<input type="text" class="form-control" name="studentId"
+						<input type="text" class="form-control" name="studentId" id="studentId"
 							value=<c:out value="${student.studentId}"/> readonly>
 
 					</div>
 				</div>
 
+
+
+				<div class="form-group">
+					<label for="regNo" class="col-sm-2 control-label">Register
+						no:</label>
+					<div class="col-sm-10">
+
+
+						<input type="text" class="form-control" name="regNo" id="regNo"
+							value=<c:out value="${student.regNo}"/> readonly>
+
+					</div>
+				</div>
 
 
 

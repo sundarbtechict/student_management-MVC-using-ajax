@@ -51,6 +51,9 @@ public class CreateStudentServlet extends HttpServlet {
 		st.setEmail(request.getParameter("email"));
 		st.setMobile(request.getParameter("mobile"));
 		st.setDept(request.getParameter("dept"));
+		st.setRegNo(request.getParameter("regNo"));
+		
+		
 		StudentServiceImpl s=StudentServiceImpl.getStudentService();
 		StatusVO statusVO=s.createStudent(st);
 			request.setAttribute("status", statusVO);

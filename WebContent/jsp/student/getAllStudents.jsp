@@ -35,8 +35,9 @@
 		<div class="table-responsive">
 			<table class="table table-striped table-bordered">
 				<tr class="info">
-					<th>Register no:</th>
+					<th>Student Id</th>
 					<th>Name:</th>
+					<th>Register No:</th>
 					<th>Date of Birth:</th>
 					<th>Department:</th>
 					<th>Email:</th>
@@ -47,6 +48,7 @@
 					<tr>
 						<td><c:out value="${st.studentId}"></c:out></td>
 						<td><c:out value="${st.name}"></c:out></td>
+						<td><c:out value="${st.regNo}"></c:out></td>
 						<td><c:out value="${st.dob}"></c:out></td>
 						<td><c:out value="${st.dept}"></c:out></td>
 						<td><c:out value="${st.email}"></c:out></td>

@@ -12,12 +12,16 @@
 
 			<table class="table table-striped">
 				<tr>
-					<th>Register no:</th>
+					<th>Student Id:</th>
 					<td><c:out value="${student.studentId}" /></td>
 				</tr>
 				<tr>
 					<th>Name:</th>
 					<td><c:out value="${student.name}" /></td>
+				</tr>
+				<tr>
+					<th>Register No:</th>
+					<td><c:out value="${student.regNo}" /></td>
 				</tr>
 				<tr>
 					<th>Date of Birth:</th>

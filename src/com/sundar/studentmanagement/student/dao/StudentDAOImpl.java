@@ -27,13 +27,13 @@ public class StudentDAOImpl implements IStudentDAO {
 		try {
 			DBUtil dbUtil = DBUtil.getDBUtil();
 			Connection c = dbUtil.getConnection();
-			PreparedStatement ps = c.prepareStatement("INSERT INTO STUDENT VALUES(?,?,?,?,?,?)");
-			ps.setString(1, studentVO.getStudentId());
-			ps.setString(2, studentVO.getName());
-			ps.setString(3, studentVO.getDob());
-			ps.setString(4, studentVO.getDept());
-			ps.setString(5, studentVO.getEmail());
-			ps.setString(6, studentVO.getMobile());
+			PreparedStatement ps = c.prepareStatement("INSERT INTO STUDENT (NAME, DOB, DEPT, EMAIL, MOBILE, REG_NO) VALUES(?,?,?,?,?,?)");
+			ps.setString(1, studentVO.getName());
+			ps.setString(2, studentVO.getDob());
+			ps.setString(3, studentVO.getDept());
+			ps.setString(4, studentVO.getEmail());
+			ps.setString(5, studentVO.getMobile());
+			ps.setString(6, studentVO.getRegNo());
 			int n = ps.executeUpdate();
 			if (n == 0)
 				System.out.println("record is not inserted");
@@ -60,7 +60,7 @@ public class StudentDAOImpl implements IStudentDAO {
 		try {
 			DBUtil dbUtil = DBUtil.getDBUtil();
 			Connection c = dbUtil.getConnection();
-			String sql = "SELECT * FROM STUDENT WHERE STUDENT_ID=?";
+			String sql = "SELECT STUDENT_ID,NAME,DOB,EMAIL,MOBILE,DEPT,REG_NO FROM STUDENT WHERE STUDENT_ID=?";
 			PreparedStatement ps = c.prepareStatement(sql);
 			ps.setString(1, studentId);
 			ResultSet rs = ps.executeQuery();
@@ -71,6 +71,7 @@ public class StudentDAOImpl implements IStudentDAO {
 				studentVO.setEmail(rs.getString("EMAIL"));
 				studentVO.setMobile(rs.getString("MOBILE"));
 				studentVO.setDept(rs.getString("DEPT"));
+				studentVO.setRegNo(rs.getString("REG_NO"));
 			}
 			statusVO.setStatusCode("*");
 			statusVO.setStatusMsg("");
@@ -96,13 +97,17 @@ public class StudentDAOImpl implements IStudentDAO {
 			DBUtil dbUtil = DBUtil.getDBUtil();
 			Connection c = dbUtil.getConnection();
 			PreparedStatement ps = c
-					.prepareStatement("UPDATE STUDENT " + "SET NAME=?,DOB=?,DEPT=?,EMAIL=?,MOBILE=?" + "WHERE STUDENT_ID=?");
-			ps.setString(6, studentVO.getStudentId());
+					.prepareStatement("UPDATE STUDENT SET NAME=?,DOB=?,DEPT=?,EMAIL=?,MOBILE=?, REG_NO=? WHERE STUDENT_ID=?");
+			
 			ps.setString(1, studentVO.getName());
 			ps.setString(2, studentVO.getDob());
 			ps.setString(3, studentVO.getDept());
 			ps.setString(4, studentVO.getEmail());
 			ps.setString(5, studentVO.getMobile());
+			ps.setString(6, studentVO.getRegNo());
+			ps.setString(7, studentVO.getStudentId());
+			
+			
 			int n = ps.executeUpdate();
 			if (n == 0)
 				System.out.println("record is not inserted");
@@ -151,17 +156,18 @@ public class StudentDAOImpl implements IStudentDAO {
 		try {
 			DBUtil dbUtil = DBUtil.getDBUtil();
 			Connection c = dbUtil.getConnection();
-			String sql = "SELECT * FROM STUDENT";
+			String sql = "SELECT STUDENT_ID,NAME,DOB,DEPT,EMAIL,MOBILE,REG_NO FROM STUDENT";
 			PreparedStatement ps = c.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				StudentVO studentVO = new StudentVO();
 				studentVO.setStudentId(rs.getString("STUDENT_ID"));
-				studentVO.setName(rs.getString("name"));
-				studentVO.setDob(rs.getString("dob"));
-				studentVO.setDept(rs.getString("dept"));
-				studentVO.setEmail(rs.getString("email"));
-				studentVO.setMobile(rs.getString("mobile"));
+				studentVO.setName(rs.getString("NAME"));
+				studentVO.setDob(rs.getString("DOB"));
+				studentVO.setDept(rs.getString("DEPT"));
+				studentVO.setEmail(rs.getString("EMAIL"));
+				studentVO.setMobile(rs.getString("MOBILE"));
+				studentVO.setRegNo(rs.getString("REG_NO"));
 				list.add(studentVO);
 			}
 			statusVO.setStatusCode("*");

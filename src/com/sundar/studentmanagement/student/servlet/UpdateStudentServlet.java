@@ -64,6 +64,9 @@ public class UpdateStudentServlet extends HttpServlet {
 		st.setEmail(request.getParameter("email"));
 		st.setMobile(request.getParameter("mobile"));
 		st.setDept(request.getParameter("dept"));
+		st.setRegNo(request.getParameter("regNo"));
+		
+		
 		StudentServiceImpl s = StudentServiceImpl.getStudentService();
 		StatusVO statusVO = s.updateStudent(st);
 		request.setAttribute("status", statusVO);
