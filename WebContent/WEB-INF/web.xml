@@ -9,16 +9,31 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
+	
+	
 	<servlet>
-		<description></description>
-		<display-name>IndexStudentServlet</display-name>
-		<servlet-name>IndexStudentServlet</servlet-name>
-		<servlet-class>com.sundar.studentmanagement.student.servlet.IndexStudentServlet</servlet-class>
+		<display-name>GetAllModulesServlet</display-name>
+		<servlet-name>GetAllModulesServlet</servlet-name>
+		<servlet-class>com.sundar.studentmanagement.student.servlet.GetAllModulesServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>IndexStudentServlet</servlet-name>
-		<url-pattern>/indexOfStudent</url-pattern>
+		<servlet-name>GetAllModulesServlet</servlet-name>
+		<url-pattern>/getAllModules</url-pattern>
 	</servlet-mapping>
+	
+
+	
+	<servlet>
+		<display-name>GetAllStudentsServlet</display-name>
+		<servlet-name>GetAllStudentsServlet</servlet-name>
+		<servlet-class>com.sundar.studentmanagement.student.servlet.GetAllStudentsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetAllStudentsServlet</servlet-name>
+		<url-pattern>/getAllStudents</url-pattern>
+	</servlet-mapping>
+	
+	
 	<servlet>
 		<description></description>
 		<display-name>ViewStudentServlet</display-name>
@@ -29,16 +44,7 @@
 		<servlet-name>ViewStudentServlet</servlet-name>
 		<url-pattern>/viewStudent</url-pattern>
 	</servlet-mapping>
-	<servlet>
-		<description></description>
-		<display-name>EditStudentServlet</display-name>
-		<servlet-name>EditStudentServlet</servlet-name>
-		<servlet-class>com.sundar.studentmanagement.student.servlet.EditStudentServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>EditStudentServlet</servlet-name>
-		<url-pattern>/editStudent</url-pattern>
-	</servlet-mapping>
+
 	<servlet>
 		<description></description>
 		<display-name>UpdateStudentServlet</display-name>

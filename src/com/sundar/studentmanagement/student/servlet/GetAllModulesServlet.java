@@ -1,6 +1,8 @@
 package com.sundar.studentmanagement.student.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
@@ -15,15 +17,15 @@ import com.sundar.studentmanagement.student.vo.StudentVO;
 import com.sundar.studentmanagement.student.service.StudentServiceImpl;
 
 /**
- * Servlet implementation class UpdateStudentServlet
+ * Servlet implementation class IndexStudentServlet
  */
-public class UpdateStudentServlet extends HttpServlet {
+public class GetAllModulesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public UpdateStudentServlet() {
+	public GetAllModulesServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -34,21 +36,24 @@ public class UpdateStudentServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String regno = request.getParameter("regno");
-		System.out.println(regno);
-		StudentServiceImpl s = StudentServiceImpl.getStudentService();
-		Map<String, Object> map = s.getStudentById(regno);
-		StudentVO studentVO = (StudentVO) map.get("StudentVO");
-		StatusVO statusVO = (StatusVO) map.get("StatusVO");
-		if (studentVO.isF()) {
-			request.setAttribute("student", studentVO);
-			request.setAttribute("status", statusVO);
-		}
-		ServletContext context = getServletContext();
-		RequestDispatcher rd = context.getRequestDispatcher("/jsp/student/updateStudent.jsp");
-		rd.forward(request, response);
 
+		
+		StudentServiceImpl s = StudentServiceImpl.getStudentService();
+		Map<String, Object> map = s.getAllStudents();
+		@SuppressWarnings("unchecked")
+		List<StudentVO> studentList = (List<StudentVO>) map.get("StudentList");
+		StatusVO statusVO = (StatusVO) map.get("StatusVO");
+		request.setAttribute("studentList", studentList);
+		if (statusVO.getStatusCode() == "Problems")
+			request.setAttribute("status", statusVO);
+		else {
+			StatusVO statusVO2 = (StatusVO) request.getAttribute("status");
+			request.setAttribute("status", statusVO2);
+		}
+
+		ServletContext context = getServletContext();
+		RequestDispatcher rd = context.getRequestDispatcher("/jsp/common/getAllModules.jsp");
+		rd.forward(request, response);
 	}
 
 	/**
@@ -58,19 +63,7 @@ public class UpdateStudentServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		StudentVO st = new StudentVO();
-		st.setName(request.getParameter("name"));
-		st.setRegNo(request.getParameter("regno"));
-		st.setDob(request.getParameter("dob"));
-		st.setEmail(request.getParameter("email"));
-		st.setMobile(request.getParameter("mobile"));
-		st.setDept(request.getParameter("dept"));
-		StudentServiceImpl s = StudentServiceImpl.getStudentService();
-		StatusVO statusVO = s.updateStudent(st);
-		request.setAttribute("status", statusVO);
-		ServletContext context = getServletContext();
-		RequestDispatcher rd = context.getRequestDispatcher("/getAllStudents");
-		rd.forward(request, response);
+		doGet(request, response);
 	}
 
 }

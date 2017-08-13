@@ -37,7 +37,7 @@ public class DeleteStudentServlet extends HttpServlet {
 			StatusVO statusVO=s.deleteStudent(regno);
 			request.setAttribute("status", statusVO);
 			ServletContext context= getServletContext();
-			RequestDispatcher rd= context.getRequestDispatcher("/indexOfStudent");
+			RequestDispatcher rd= context.getRequestDispatcher("/getAllStudents");
 			rd.forward(request, response);
 
 	}

@@ -47,21 +47,10 @@ public class ViewStudentServlet extends HttpServlet {
 				System.out.println(" hi");
 			}
 		ServletContext context = getServletContext();
-		RequestDispatcher rd = context.getRequestDispatcher("/viewStudent.jsp");
+		RequestDispatcher rd = context.getRequestDispatcher("/jsp/student/viewStudent.jsp");
 		System.out.println(" hi");
 		rd.forward(request, response);
 
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
-		doGet(request, response);
 	}
 
 }
