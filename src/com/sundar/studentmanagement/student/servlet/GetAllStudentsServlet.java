@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sundar.studentmanagement.student.vo.StatusVO;
 import com.sundar.studentmanagement.student.vo.StudentVO;
+import com.sundar.studentmanagement.student.service.IStudentService;
 import com.sundar.studentmanagement.student.service.StudentServiceImpl;
 
 /**
@@ -38,22 +39,19 @@ public class GetAllStudentsServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		
-		StudentServiceImpl s = StudentServiceImpl.getStudentService();
-		Map<String, Object> map = s.getAllStudents();
+		IStudentService studentService = StudentServiceImpl.getStudentService();
+		Map<String, Object> studentVOAndStatusVOMap = studentService.getAllStudents();
+
+		
 		@SuppressWarnings("unchecked")
-		List<StudentVO> studentList = (List<StudentVO>) map.get("StudentList");
-		StatusVO statusVO = (StatusVO) map.get("StatusVO");
-		request.setAttribute("studentList", studentList);
-		if (statusVO.getStatusCode() == "Problems")
-			request.setAttribute("status", statusVO);
-		else {
-			StatusVO statusVO2 = (StatusVO) request.getAttribute("status");
-			request.setAttribute("status", statusVO2);
-		}
+		List<StudentVO> studentVOs = (List<StudentVO>) studentVOAndStatusVOMap.get("studentVOs");
+		StatusVO statusVO = (StatusVO) studentVOAndStatusVOMap.get("statusVO");
+		request.setAttribute("studentVOs", studentVOs);
+		request.setAttribute("statusVO", statusVO);
 
 		ServletContext context = getServletContext();
-		RequestDispatcher rd = context.getRequestDispatcher("/jsp/student/getAllStudents.jsp");
-		rd.forward(request, response);
+		RequestDispatcher requestDispatcher = context.getRequestDispatcher("/jsp/student/getAllStudents.jsp");
+		requestDispatcher.forward(request, response);
 	}
 
 	/**

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sundar.studentmanagement.student.vo.StatusVO;
 import com.sundar.studentmanagement.student.vo.StudentVO;
+import com.sundar.studentmanagement.student.service.IStudentService;
 import com.sundar.studentmanagement.student.service.StudentServiceImpl;
 
 /**
@@ -35,21 +36,22 @@ public class ViewStudentServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String regno = request.getParameter("regno");
-		System.out.println(regno);
-			StudentServiceImpl s = StudentServiceImpl.getStudentService();
-			Map<String, Object> map = s.getStudentById(regno);
-			StudentVO studentVO=(StudentVO) map.get("StudentVO");
-			StatusVO statusVO=(StatusVO) map.get("StatusVO");
-			if (studentVO.isF()) {
-				request.setAttribute("student", studentVO);
-				request.setAttribute("status", statusVO);
-				System.out.println(" hi");
-			}
+		String studentId = request.getParameter("studentId");
+
+		
+		IStudentService studentService = StudentServiceImpl.getStudentService();
+		Map<String, Object> studentVOAndStatusVOMap = studentService.getStudentById(studentId);
+		
+		
+		StudentVO studentVO = (StudentVO) studentVOAndStatusVOMap.get("studentVO");
+		StatusVO statusVO = (StatusVO) studentVOAndStatusVOMap.get("statusVO");
+
+		request.setAttribute("studentVO", studentVO);
+		request.setAttribute("statusVO", statusVO);
+
 		ServletContext context = getServletContext();
-		RequestDispatcher rd = context.getRequestDispatcher("/jsp/student/viewStudent.jsp");
-		System.out.println(" hi");
-		rd.forward(request, response);
+		RequestDispatcher requestDispatcher = context.getRequestDispatcher("/jsp/student/viewStudent.jsp");
+		requestDispatcher.forward(request, response);
 
 	}
 

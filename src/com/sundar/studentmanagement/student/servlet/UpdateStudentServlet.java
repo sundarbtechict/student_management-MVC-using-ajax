@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sundar.studentmanagement.student.vo.StatusVO;
 import com.sundar.studentmanagement.student.vo.StudentVO;
+import com.sundar.studentmanagement.student.service.IStudentService;
 import com.sundar.studentmanagement.student.service.StudentServiceImpl;
 
 /**
@@ -34,20 +35,22 @@ public class UpdateStudentServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String regno = request.getParameter("regno");
-		System.out.println(regno);
-		StudentServiceImpl s = StudentServiceImpl.getStudentService();
-		Map<String, Object> map = s.getStudentById(regno);
-		StudentVO studentVO = (StudentVO) map.get("StudentVO");
-		StatusVO statusVO = (StatusVO) map.get("StatusVO");
-		if (studentVO.isF()) {
-			request.setAttribute("student", studentVO);
-			request.setAttribute("status", statusVO);
-		}
+		
+		String studentId = request.getParameter("studentId");
+		
+		IStudentService studentService = StudentServiceImpl.getStudentService();
+		Map<String, Object> studentVOAndStatusVOMap = studentService.getStudentById(studentId);
+		
+		
+		StudentVO studentVO = (StudentVO) studentVOAndStatusVOMap.get("studentVO");
+		StatusVO statusVO = (StatusVO) studentVOAndStatusVOMap.get("statusVO");
+	
+		request.setAttribute("studentVO", studentVO);
+		request.setAttribute("statusVO", statusVO);
+	
 		ServletContext context = getServletContext();
-		RequestDispatcher rd = context.getRequestDispatcher("/jsp/student/updateStudent.jsp");
-		rd.forward(request, response);
+		RequestDispatcher requestDispatcher = context.getRequestDispatcher("/jsp/student/updateStudent.jsp");
+		requestDispatcher.forward(request, response);
 
 	}
 
@@ -57,20 +60,25 @@ public class UpdateStudentServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		StudentVO st = new StudentVO();
-		st.setName(request.getParameter("name"));
-		st.setRegNo(request.getParameter("regno"));
-		st.setDob(request.getParameter("dob"));
-		st.setEmail(request.getParameter("email"));
-		st.setMobile(request.getParameter("mobile"));
-		st.setDept(request.getParameter("dept"));
-		StudentServiceImpl s = StudentServiceImpl.getStudentService();
-		StatusVO statusVO = s.updateStudent(st);
-		request.setAttribute("status", statusVO);
+
+		StudentVO studentVO = new StudentVO();
+		studentVO.setName(request.getParameter("name"));
+		studentVO.setStudentId(request.getParameter("studentId"));
+		studentVO.setDob(request.getParameter("dob"));
+		studentVO.setEmail(request.getParameter("email"));
+		studentVO.setMobile(request.getParameter("mobile"));
+		studentVO.setDept(request.getParameter("dept"));
+		studentVO.setRegNo(request.getParameter("regNo"));
+		
+		
+		IStudentService studentService = StudentServiceImpl.getStudentService();
+		StatusVO statusVO = studentService.updateStudent(studentVO);
+		request.setAttribute("statusVO", statusVO);
+		
+		
 		ServletContext context = getServletContext();
-		RequestDispatcher rd = context.getRequestDispatcher("/getAllStudents");
-		rd.forward(request, response);
+		RequestDispatcher requestDispatcher = context.getRequestDispatcher("/getAllStudents");
+		requestDispatcher.forward(request, response);
 	}
 
 }
