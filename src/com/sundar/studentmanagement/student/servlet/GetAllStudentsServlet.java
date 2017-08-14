@@ -2,6 +2,7 @@ package com.sundar.studentmanagement.student.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -16,6 +17,7 @@ import com.sundar.studentmanagement.student.vo.StatusVO;
 import com.sundar.studentmanagement.student.vo.StudentVO;
 import com.sundar.studentmanagement.student.service.IStudentService;
 import com.sundar.studentmanagement.student.service.StudentServiceImpl;
+import com.sundar.studentmanagement.student.util.CommonUtil;
 
 /**
  * Servlet implementation class IndexStudentServlet
@@ -47,7 +49,19 @@ public class GetAllStudentsServlet extends HttpServlet {
 		List<StudentVO> studentVOs = (List<StudentVO>) studentVOAndStatusVOMap.get("studentVOs");
 		StatusVO statusVO = (StatusVO) studentVOAndStatusVOMap.get("statusVO");
 		request.setAttribute("studentVOs", studentVOs);
-		request.setAttribute("statusVO", statusVO);
+		
+		
+		if (CommonUtil.isForwardedRequest(request)) {
+			StatusVO oldStatusVO = (StatusVO)request.getAttribute("statusVO");
+			List<StatusVO> statusVOs = new ArrayList<StatusVO>();
+			statusVOs.add(oldStatusVO);
+			
+			if (statusVO != null) {
+				statusVOs.add(statusVO);
+			}
+			
+			request.setAttribute("statusVOs", statusVOs);
+		}
 
 		ServletContext context = getServletContext();
 		RequestDispatcher requestDispatcher = context.getRequestDispatcher("/jsp/student/getAllStudents.jsp");
