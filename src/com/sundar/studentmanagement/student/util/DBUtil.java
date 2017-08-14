@@ -7,28 +7,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DBUtil {
-	private final String url = "jdbc:mysql://localhost:3306/student_management";
-	private final String user = "root";
-	private final String pass = "";
-	private static Connection connection;
-	private static DBUtil instance;
+	private static final String DB_DRIVER = "com.mysql.jdbc.Driver";
+	private static final String DB_HOST = "jdbc:mysql://localhost:3306/student_management";
+	private static final String DB_USERNAME = "root";
+	private static final String DB_PASSWORD = "";
 
-	private DBUtil() {
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			connection = DriverManager.getConnection(url, user, pass);
-		} catch (Exception e) {
-		}
-	}
-
-	public static DBUtil getDBUtil() {
-		instance = new DBUtil();
-		return instance;
-	}
-
-	public Connection getConnection() throws Exception {
+	public static Connection getConnection() throws Exception {
+		Connection connection = null;
+		Class.forName(DB_DRIVER);
+		connection = DriverManager.getConnection(DB_HOST, DB_USERNAME, DB_PASSWORD);
 		return connection;
 	}
+	
 	
 	public static void closeResouces(Connection connection, PreparedStatement preparedStatement, ResultSet resultSet) {
 		

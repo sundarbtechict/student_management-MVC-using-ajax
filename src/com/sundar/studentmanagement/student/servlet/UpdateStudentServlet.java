@@ -38,7 +38,7 @@ public class UpdateStudentServlet extends HttpServlet {
 		
 		String studentId = request.getParameter("studentId");
 		
-		IStudentService studentService = StudentServiceImpl.getStudentService();
+		IStudentService studentService = StudentServiceImpl.getInstance();
 		Map<String, Object> studentVOAndStatusVOMap = studentService.getStudentById(studentId);
 		
 		
@@ -71,7 +71,7 @@ public class UpdateStudentServlet extends HttpServlet {
 		studentVO.setRegNo(request.getParameter("regNo"));
 		
 		
-		IStudentService studentService = StudentServiceImpl.getStudentService();
+		IStudentService studentService = StudentServiceImpl.getInstance();
 		StatusVO statusVO = studentService.updateStudent(studentVO);
 		request.setAttribute("statusVO", statusVO);
 		

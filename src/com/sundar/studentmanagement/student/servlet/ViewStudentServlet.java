@@ -39,7 +39,7 @@ public class ViewStudentServlet extends HttpServlet {
 		String studentId = request.getParameter("studentId");
 
 		
-		IStudentService studentService = StudentServiceImpl.getStudentService();
+		IStudentService studentService = StudentServiceImpl.getInstance();
 		Map<String, Object> studentVOAndStatusVOMap = studentService.getStudentById(studentId);
 		
 		

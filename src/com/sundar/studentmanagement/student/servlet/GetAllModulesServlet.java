@@ -39,7 +39,7 @@ public class GetAllModulesServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		
-		IStudentService studentService = StudentServiceImpl.getStudentService();
+		IStudentService studentService = StudentServiceImpl.getInstance();
 		Map<String, Object> studentVOAndStatusVOMap = studentService.getAllStudents();
 		@SuppressWarnings("unchecked")
 		List<StudentVO> studentVOs = (List<StudentVO>) studentVOAndStatusVOMap.get("studentVOs");

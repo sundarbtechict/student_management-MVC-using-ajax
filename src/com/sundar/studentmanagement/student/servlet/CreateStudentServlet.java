@@ -54,7 +54,7 @@ public class CreateStudentServlet extends HttpServlet {
 		studentVO.setRegNo(request.getParameter("regNo"));
 		
 		
-		IStudentService studentService = StudentServiceImpl.getStudentService();
+		IStudentService studentService = StudentServiceImpl.getInstance();
 		StatusVO statusVO=studentService.createStudent(studentVO);
 		
 		request.setAttribute("statusVO", statusVO);

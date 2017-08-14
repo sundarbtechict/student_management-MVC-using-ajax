@@ -14,21 +14,22 @@ import com.sundar.studentmanagement.student.vo.StatusVO;
 import com.sundar.studentmanagement.student.vo.StudentVO;
 
 public class StudentDAOImpl implements IStudentDAO {
-	private static StudentDAOImpl studentDAO = new StudentDAOImpl();
-
+	
+	// Singleton -Pattern
+	private static StudentDAOImpl instance = new StudentDAOImpl();
 	private StudentDAOImpl() {
 	}
-
-	public static StudentDAOImpl getStudentDAO() {
-		return studentDAO;
+	public static StudentDAOImpl getInstance() {
+		return instance;
 	}
 
+	
 	public StatusVO createStudent(StudentVO studentVO) {
 		StatusVO statusVO = new StatusVO();
 		String sql = "INSERT INTO STUDENT (NAME, DOB, DEPT, EMAIL, MOBILE, REG_NO) VALUES(?,?,?,?,?,?)";
 		try {
-			DBUtil dbUtil = DBUtil.getDBUtil();
-			Connection connection = dbUtil.getConnection();
+			// DBUtil dbUtil = DBUtil.getInstance();
+			Connection connection = DBUtil.getConnection();
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, studentVO.getName());
 			preparedStatement.setString(2, studentVO.getDob());
@@ -68,8 +69,8 @@ public class StudentDAOImpl implements IStudentDAO {
 		StudentVO studentVO = null;
 		Map<String, Object> studentVOAndStatusVOMap = new HashMap<String, Object>();
 		try {
-			DBUtil dbUtil = DBUtil.getDBUtil();
-			Connection connection = dbUtil.getConnection();
+			// DBUtil dbUtil = DBUtil.getInstance();
+			Connection connection = DBUtil.getConnection();
 
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, studentId);
@@ -105,8 +106,8 @@ public class StudentDAOImpl implements IStudentDAO {
 		StatusVO statusVO = new StatusVO();
 		try {
 
-			DBUtil dbUtil = DBUtil.getDBUtil();
-			Connection connection = dbUtil.getConnection();
+			// DBUtil dbUtil = DBUtil.getInstance();
+			Connection connection = DBUtil.getConnection();
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
 			preparedStatement.setString(1, studentVO.getName());
@@ -149,8 +150,8 @@ public class StudentDAOImpl implements IStudentDAO {
 		StatusVO statusVO = new StatusVO();
 
 		try {
-			DBUtil dbUtil = DBUtil.getDBUtil();
-			Connection connection = dbUtil.getConnection();
+			// DBUtil dbUtil = DBUtil.getInstance();
+			Connection connection = DBUtil.getConnection();
 
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, studentId);
@@ -191,8 +192,8 @@ public class StudentDAOImpl implements IStudentDAO {
 		List<StudentVO> studentVOs = null;
 
 		try {
-			DBUtil dbUtil = DBUtil.getDBUtil();
-			connection = dbUtil.getConnection();
+			// DBUtil dbUtil = DBUtil.getInstance();
+			connection = DBUtil.getConnection();
 
 			preparedStatement = connection.prepareStatement(sql);
 			resultSet = preparedStatement.executeQuery();

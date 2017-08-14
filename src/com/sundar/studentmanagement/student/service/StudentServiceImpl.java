@@ -8,40 +8,41 @@ import com.sundar.studentmanagement.student.vo.StatusVO;
 import com.sundar.studentmanagement.student.vo.StudentVO;
 
 public class StudentServiceImpl implements IStudentService{
-	private static StudentServiceImpl studentService=new StudentServiceImpl();
 	
+	// Singleton -Pattern
+	private static StudentServiceImpl instance = new StudentServiceImpl();
 	private StudentServiceImpl(){}
-	
-	public static StudentServiceImpl getStudentService(){
-		return studentService;
+	public static StudentServiceImpl getInstance() {
+		return instance;
 	}
-	
+
+
 
 	public  StatusVO createStudent(StudentVO studentVO)
 	{
-		IStudentDAO studentDAO=StudentDAOImpl.getStudentDAO();
+		IStudentDAO studentDAO=StudentDAOImpl.getInstance();
 		StatusVO statusVO=studentDAO.createStudent(studentVO);
 		return statusVO;
 	}
 	public  Map<String,Object> getStudentById(String studentId)
 	{
-		IStudentDAO studentDAO=StudentDAOImpl.getStudentDAO();
+		IStudentDAO studentDAO=StudentDAOImpl.getInstance();
 		Map<String,Object> map=studentDAO.getStudentById(studentId);
 		return map;
 		
 	}
 	public  StatusVO updateStudent(StudentVO studentVO){
-		IStudentDAO studentDAO=StudentDAOImpl.getStudentDAO();
+		IStudentDAO studentDAO=StudentDAOImpl.getInstance();
 		StatusVO statusVO=studentDAO.updateStudent(studentVO);
 		return statusVO;
 	}
 	public  StatusVO deleteStudent(String studentId){
-		IStudentDAO studentDAO=StudentDAOImpl.getStudentDAO();
+		IStudentDAO studentDAO=StudentDAOImpl.getInstance();
 		StatusVO statusVO=studentDAO.deleteStudent(studentId);
 		return statusVO;
 	}
 	public  Map<String,Object> getAllStudents(){
-		IStudentDAO studentDAO=StudentDAOImpl.getStudentDAO();
+		IStudentDAO studentDAO=StudentDAOImpl.getInstance();
 		Map<String,Object> map=studentDAO.getAllStudents();
 		return map;
 	}

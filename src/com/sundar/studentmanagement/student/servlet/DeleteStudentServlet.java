@@ -35,7 +35,7 @@ public class DeleteStudentServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		String studentId = request.getParameter("studentId");
-		IStudentService studentService = StudentServiceImpl.getStudentService();
+		IStudentService studentService = StudentServiceImpl.getInstance();
 		StatusVO statusVO = studentService.deleteStudent(studentId);
 		request.setAttribute("statusVO", statusVO);
 		
