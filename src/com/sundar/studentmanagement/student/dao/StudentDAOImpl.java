@@ -8,23 +8,30 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
+
 import com.sundar.studentmanagement.student.constants.CommonConstants;
+import com.sundar.studentmanagement.student.servlet.GetAllStudentsServlet;
 import com.sundar.studentmanagement.student.util.DBUtil;
 import com.sundar.studentmanagement.student.vo.StatusVO;
 import com.sundar.studentmanagement.student.vo.StudentVO;
 
 public class StudentDAOImpl implements IStudentDAO {
-	
+	private static final Logger LOGGER = Logger.getLogger(StudentDAOImpl.class);
+
 	// Singleton -Pattern
 	private static StudentDAOImpl instance = new StudentDAOImpl();
+
 	private StudentDAOImpl() {
 	}
+
 	public static StudentDAOImpl getInstance() {
 		return instance;
 	}
 
-	
 	public StatusVO createStudent(StudentVO studentVO) {
+		LOGGER.info("-----------------createStudent---------------------");
+
 		StatusVO statusVO = new StatusVO();
 		String sql = "INSERT INTO STUDENT (NAME, DOB, DEPT, EMAIL, MOBILE, REG_NO) VALUES(?,?,?,?,?,?)";
 		try {
@@ -49,9 +56,11 @@ public class StudentDAOImpl implements IStudentDAO {
 				statusVO.setMoreDetails("No Error occured in DB, But noOfRecordsInserted is 0");
 			}
 
+			LOGGER.info("-----------------createStudent :: SUCCESS---------------------");
 			DBUtil.closeResouces(connection, preparedStatement, null);
 
 		} catch (Exception e) {
+			LOGGER.error("-----------------createStudent :: FAILURE---------------------");
 			e.printStackTrace();
 
 			statusVO.setStatusCode(CommonConstants.STATUS_CODE_FAILURE);
@@ -63,6 +72,8 @@ public class StudentDAOImpl implements IStudentDAO {
 	}
 
 	public Map<String, Object> getStudentById(String studentId) {
+		LOGGER.info("-----------------getStudentById ---------------------");
+
 		String sql = "SELECT STUDENT_ID,NAME,DOB,EMAIL,MOBILE,DEPT,REG_NO FROM STUDENT WHERE STUDENT_ID=?";
 
 		StatusVO statusVO = new StatusVO();
@@ -86,10 +97,12 @@ public class StudentDAOImpl implements IStudentDAO {
 				studentVO.setRegNo(resultSet.getString("REG_NO"));
 			}
 
+			LOGGER.info("-----------------getStudentById :: SUCCESS---------------------");
 			DBUtil.closeResouces(connection, preparedStatement, resultSet);
 			studentVOAndStatusVOMap.put("studentVO", studentVO);
 
 		} catch (Exception e) {
+			LOGGER.error("-----------------getStudentById :: FAILURE---------------------");
 			e.printStackTrace();
 
 			statusVO.setStatusCode(CommonConstants.STATUS_CODE_FAILURE);
@@ -102,6 +115,8 @@ public class StudentDAOImpl implements IStudentDAO {
 	}
 
 	public StatusVO updateStudent(StudentVO studentVO) {
+		LOGGER.info("-----------------updateStudent---------------------");
+
 		String sql = "UPDATE STUDENT SET NAME=?,DOB=?,DEPT=?,EMAIL=?,MOBILE=?, REG_NO=? WHERE STUDENT_ID=?";
 		StatusVO statusVO = new StatusVO();
 		try {
@@ -131,9 +146,11 @@ public class StudentDAOImpl implements IStudentDAO {
 				statusVO.setMoreDetails("No Error occured in DB, But noOfRecordsInserted is 0");
 			}
 
+			LOGGER.info("-----------------updateStudent :: SUCCESS---------------------");
 			DBUtil.closeResouces(connection, preparedStatement, null);
 
 		} catch (Exception e) {
+			LOGGER.error("-----------------updateStudent :: FAILURE---------------------");
 			e.printStackTrace();
 
 			statusVO.setStatusCode(CommonConstants.STATUS_CODE_FAILURE);
@@ -146,6 +163,9 @@ public class StudentDAOImpl implements IStudentDAO {
 	}
 
 	public StatusVO deleteStudent(String studentId) {
+
+		LOGGER.info("-----------------deleteStudent---------------------");
+
 		String sql = "DELETE FROM STUDENT WHERE STUDENT_ID=?";
 		StatusVO statusVO = new StatusVO();
 
@@ -169,9 +189,11 @@ public class StudentDAOImpl implements IStudentDAO {
 				statusVO.setMoreDetails("No Error occured in DB, But noOfRecordsInserted is 0");
 			}
 
+			LOGGER.info("-----------------deleteStudent :: SUCCESS---------------------");
 			DBUtil.closeResouces(connection, preparedStatement, null);
 
 		} catch (Exception e) {
+			LOGGER.error("-----------------deleteStudent :: FAILURE---------------------");
 			e.printStackTrace();
 			statusVO.setStatusCode(CommonConstants.STATUS_CODE_FAILURE);
 			statusVO.setStatusMsg("Student record is not deleted");
@@ -182,6 +204,8 @@ public class StudentDAOImpl implements IStudentDAO {
 	}
 
 	public Map<String, Object> getAllStudents() {
+		LOGGER.info("-----------------getAllStudents---------------------");
+
 		String sql = "SELECT STUDENT_ID,NAME,DOB,DEPT,EMAIL,MOBILE,REG_NO FROM STUDENT";
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -211,10 +235,13 @@ public class StudentDAOImpl implements IStudentDAO {
 				studentVOs.add(studentVO);
 			}
 
+			LOGGER.info("-----------------getAllStudents :: SUCCESS---------------------");
 			DBUtil.closeResouces(connection, preparedStatement, resultSet);
 			studentVOAndStatusVOMap.put("studentVOs", studentVOs);
 
 		} catch (Exception e) {
+			LOGGER.error("-----------------getAllStudents :: FAILURE---------------------");
+
 			e.printStackTrace();
 			statusVO = new StatusVO();
 			statusVO.setStatusCode(CommonConstants.STATUS_CODE_FAILURE);

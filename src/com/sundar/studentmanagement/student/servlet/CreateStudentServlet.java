@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.sundar.studentmanagement.student.vo.StatusVO;
 import com.sundar.studentmanagement.student.vo.StudentVO;
 import com.sundar.studentmanagement.student.service.IStudentService;
@@ -19,6 +21,7 @@ import com.sundar.studentmanagement.student.service.StudentServiceImpl;
  */
 public class CreateStudentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger LOGGER = Logger.getLogger(CreateStudentServlet.class);
 
     /**
      * Default constructor. 
@@ -43,6 +46,7 @@ public class CreateStudentServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 
+		LOGGER.info("-----------------createStudent---------------------");
 		
 		StudentVO studentVO=new StudentVO();
 		studentVO.setName(request.getParameter("name"));
@@ -61,6 +65,8 @@ public class CreateStudentServlet extends HttpServlet {
 		ServletContext context= getServletContext();
 		RequestDispatcher requestDispatcher= context.getRequestDispatcher("/getAllStudents");
 		requestDispatcher.forward(request, response);
+		
+		LOGGER.info("-----------------/createStudent---------------------");
 	}
 }
 

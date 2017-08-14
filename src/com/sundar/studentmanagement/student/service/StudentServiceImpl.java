@@ -2,12 +2,16 @@ package com.sundar.studentmanagement.student.service;
 
 import java.util.Map;
 
+import org.apache.log4j.Logger;
+
 import com.sundar.studentmanagement.student.dao.IStudentDAO;
 import com.sundar.studentmanagement.student.dao.StudentDAOImpl;
+import com.sundar.studentmanagement.student.servlet.GetAllStudentsServlet;
 import com.sundar.studentmanagement.student.vo.StatusVO;
 import com.sundar.studentmanagement.student.vo.StudentVO;
 
 public class StudentServiceImpl implements IStudentService{
+	private static final Logger LOGGER = Logger.getLogger(StudentServiceImpl.class);
 	
 	// Singleton -Pattern
 	private static StudentServiceImpl instance = new StudentServiceImpl();
