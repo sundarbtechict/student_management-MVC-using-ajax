@@ -3,6 +3,7 @@ package com.sundar.studentmanagement.student.vo;
 public class StatusVO {
 	private String statusCode;
 	private String statusMsg;
+	private String moreDetails;
 	
 	public String getStatusCode() {
 		return statusCode;
@@ -16,4 +17,12 @@ public class StatusVO {
 	public void setStatusMsg(String statusMsg) {
 		this.statusMsg = statusMsg;
 	}
+	public String getMoreDetails() {
+		return moreDetails;
+	}
+	public void setMoreDetails(String moreDetails) {
+		this.moreDetails = moreDetails;
+	}
+	
+	
 }

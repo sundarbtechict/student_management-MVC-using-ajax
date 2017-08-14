@@ -19,7 +19,7 @@
 					<div class="col-sm-10">
 
 						<input type="text" class="form-control" name="studentId" id="studentId"
-							value=<c:out value="${student.studentId}"/> readonly>
+							value=<c:out value="${studentVO.studentId}"/> readonly>
 
 					</div>
 				</div>
@@ -33,7 +33,7 @@
 
 
 						<input type="text" class="form-control" name="regNo" id="regNo"
-							value=<c:out value="${student.regNo}"/> readonly>
+							value=<c:out value="${studentVO.regNo}"/> readonly>
 
 					</div>
 				</div>
@@ -44,7 +44,7 @@
 					<label for="name" class="col-sm-2 control-label">Name:</label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control" name="name"
-							value=<c:out value="${student.name}"/>>
+							value=<c:out value="${studentVO.name}"/>>
 					</div>
 				</div>
 
@@ -56,7 +56,7 @@
 						Birth::</label>
 					<div class="col-sm-10">
 						<input type="date" class="form-control" name="dob"
-							value=<c:out value="${student.dob}"/>>
+							value=<c:out value="${studentVO.dob}"/>>
 					</div>
 				</div>
 
@@ -67,7 +67,7 @@
 					<label for="email" class="col-sm-2 control-label">Email:</label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control" name="email"
-							value=<c:out value="${student.email}"/>>
+							value=<c:out value="${studentVO.email}"/>>
 					</div>
 				</div>
 
@@ -79,7 +79,7 @@
 					<label for="mobile" class="col-sm-2 control-label">Mobile:</label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control" name="mobile"
-							value=<c:out value="${student.mobile}"/>>
+							value=<c:out value="${studentVO.mobile}"/>>
 					</div>
 				</div>
 
@@ -90,7 +90,7 @@
 					<label for="dept" class="col-sm-2 control-label">Department:</label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control" name="dept"
-							value=<c:out value="${student.dept}"/>>
+							value=<c:out value="${studentVO.dept}"/>>
 					</div>
 				</div>
 

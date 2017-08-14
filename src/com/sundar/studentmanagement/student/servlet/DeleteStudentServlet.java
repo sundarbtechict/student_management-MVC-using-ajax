@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sundar.studentmanagement.student.service.IStudentService;
 import com.sundar.studentmanagement.student.service.StudentServiceImpl;
 import com.sundar.studentmanagement.student.vo.StatusVO;
 
@@ -32,14 +33,15 @@ public class DeleteStudentServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		String studentId = request.getParameter("studentId");
-		StudentServiceImpl s = StudentServiceImpl.getStudentService();
-		StatusVO statusVO = s.deleteStudent(studentId);
-		request.setAttribute("status", statusVO);
+		IStudentService studentService = StudentServiceImpl.getStudentService();
+		StatusVO statusVO = studentService.deleteStudent(studentId);
+		request.setAttribute("statusVO", statusVO);
+		
 		ServletContext context = getServletContext();
-		RequestDispatcher rd = context.getRequestDispatcher("/getAllStudents");
-		rd.forward(request, response);
+		RequestDispatcher requestDispatcher = context.getRequestDispatcher("/getAllStudents");
+		requestDispatcher.forward(request, response);
 
 	}
 

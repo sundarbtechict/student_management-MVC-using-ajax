@@ -13,31 +13,31 @@
 			<table class="table table-striped">
 				<tr>
 					<th>Student Id:</th>
-					<td><c:out value="${student.studentId}" /></td>
+					<td><c:out value="${studentVO.studentId}" /></td>
 				</tr>
 				<tr>
 					<th>Name:</th>
-					<td><c:out value="${student.name}" /></td>
+					<td><c:out value="${studentVO.name}" /></td>
 				</tr>
 				<tr>
 					<th>Register No:</th>
-					<td><c:out value="${student.regNo}" /></td>
+					<td><c:out value="${studentVO.regNo}" /></td>
 				</tr>
 				<tr>
 					<th>Date of Birth:</th>
-					<td><c:out value="${student.dob}" /></td>
+					<td><c:out value="${studentVO.dob}" /></td>
 				</tr>
 				<tr>
 					<th>Department:</th>
-					<td><c:out value="${student.dept}" /></td>
+					<td><c:out value="${studentVO.dept}" /></td>
 				</tr>
 				<tr>
 					<th>Email:</th>
-					<td><c:out value="${student.email}" /></td>
+					<td><c:out value="${studentVO.email}" /></td>
 				</tr>
 				<tr>
 					<th>Mobile:</th>
-					<td><c:out value="${student.mobile}" /></td>
+					<td><c:out value="${studentVO.mobile}" /></td>
 				</tr>
 			</table>
 		</div>
