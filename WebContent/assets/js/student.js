@@ -45,11 +45,11 @@ function createStudent()
 
 
 
-function getViewStudentPage(regno)
+function getViewStudentPage(studentId)
 {
 	// console.log("hi view");
 	$.ajax({
-        url: appContextPath + "/viewStudent?regno="+regno,
+        url: appContextPath + "/viewStudent?studentId="+studentId,
         method: "GET",
         success: function (result) 
         {
@@ -64,11 +64,11 @@ function getViewStudentPage(regno)
 }
 
 
-function getUpdateStudentPage(regno)
+function getUpdateStudentPage(studentId)
 {
 	// console.log("hi edit");
 	$.ajax({
-		url: appContextPath + "/updateStudent?regno="+regno,
+		url: appContextPath + "/updateStudent?studentId="+studentId,
         method: "GET",
         success: function (result) 
         {
@@ -99,19 +99,19 @@ function updateStudent()
 }
 
 
-function confirmDeleteStudent(regNo)
+function confirmDeleteStudent(studentId)
 {
-	var isOkToDelete = confirm('Are you sure you want to delete Student (RegNo: '+ regNo +')');
+	var isOkToDelete = confirm('Are you sure you want to delete Student (studentId: '+ studentId +')');
 	if(isOkToDelete) {
-		deleteStudent(regNo);
+		deleteStudent(studentId);
 	}
 }
 
-function deleteStudent(regno)
+function deleteStudent(studentId)
 {
 	// console.log("hi delete");
 	$.ajax({
-		url: appContextPath + "/deleteStudent?regno="+regno,
+		url: appContextPath + "/deleteStudent?studentId="+studentId,
 		method: "GET",
 		success: function (result) 
 		{

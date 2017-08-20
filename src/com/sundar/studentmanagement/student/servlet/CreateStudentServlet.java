@@ -9,8 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.sundar.studentmanagement.student.vo.StatusVO;
 import com.sundar.studentmanagement.student.vo.StudentVO;
+import com.sundar.studentmanagement.student.service.IStudentService;
 import com.sundar.studentmanagement.student.service.StudentServiceImpl;
 
 /**
@@ -18,6 +21,7 @@ import com.sundar.studentmanagement.student.service.StudentServiceImpl;
  */
 public class CreateStudentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger LOGGER = Logger.getLogger(CreateStudentServlet.class);
 
     /**
      * Default constructor. 
@@ -30,12 +34,10 @@ public class CreateStudentServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		System.out.println("HELLO: ");
 		
 		ServletContext context= getServletContext();
-		RequestDispatcher rd= context.getRequestDispatcher("/jsp/student/createStudent.jsp");
-		rd.forward(request, response);
+		RequestDispatcher requestDispatcher= context.getRequestDispatcher("/jsp/student/createStudent.jsp");
+		requestDispatcher.forward(request, response);
 	}
 
 	/**
@@ -43,20 +45,28 @@ public class CreateStudentServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		// TODO Auto-generated method stub
-		StudentVO st=new StudentVO();
-		st.setName(request.getParameter("name"));
-		st.setRegNo(request.getParameter("regno"));
-		st.setDob(request.getParameter("dob"));
-		st.setEmail(request.getParameter("email"));
-		st.setMobile(request.getParameter("mobile"));
-		st.setDept(request.getParameter("dept"));
-		StudentServiceImpl s=StudentServiceImpl.getStudentService();
-		StatusVO statusVO=s.createStudent(st);
-			request.setAttribute("status", statusVO);
+
+		LOGGER.info("-----------------createStudent---------------------");
+		
+		StudentVO studentVO=new StudentVO();
+		studentVO.setName(request.getParameter("name"));
+		studentVO.setStudentId(request.getParameter("studentId"));
+		studentVO.setDob(request.getParameter("dob"));
+		studentVO.setEmail(request.getParameter("email"));
+		studentVO.setMobile(request.getParameter("mobile"));
+		studentVO.setDept(request.getParameter("dept"));
+		studentVO.setRegNo(request.getParameter("regNo"));
+		
+		
+		IStudentService studentService = StudentServiceImpl.getInstance();
+		StatusVO statusVO=studentService.createStudent(studentVO);
+		
+		request.setAttribute("statusVO", statusVO);
 		ServletContext context= getServletContext();
-		RequestDispatcher rd= context.getRequestDispatcher("/getAllStudents");
-		rd.forward(request, response);
+		RequestDispatcher requestDispatcher= context.getRequestDispatcher("/getAllStudents");
+		requestDispatcher.forward(request, response);
+		
+		LOGGER.info("-----------------/createStudent---------------------");
 	}
 }
 

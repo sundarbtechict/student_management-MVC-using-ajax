@@ -2,45 +2,51 @@ package com.sundar.studentmanagement.student.service;
 
 import java.util.Map;
 
+import org.apache.log4j.Logger;
+
+import com.sundar.studentmanagement.student.dao.IStudentDAO;
 import com.sundar.studentmanagement.student.dao.StudentDAOImpl;
+import com.sundar.studentmanagement.student.servlet.GetAllStudentsServlet;
 import com.sundar.studentmanagement.student.vo.StatusVO;
 import com.sundar.studentmanagement.student.vo.StudentVO;
 
 public class StudentServiceImpl implements IStudentService{
-	private static StudentServiceImpl studentService=new StudentServiceImpl();
+	private static final Logger LOGGER = Logger.getLogger(StudentServiceImpl.class);
 	
+	// Singleton -Pattern
+	private static StudentServiceImpl instance = new StudentServiceImpl();
 	private StudentServiceImpl(){}
-	
-	public static StudentServiceImpl getStudentService(){
-		return studentService;
+	public static StudentServiceImpl getInstance() {
+		return instance;
 	}
-	
+
+
 
 	public  StatusVO createStudent(StudentVO studentVO)
 	{
-		StudentDAOImpl studentDAO=StudentDAOImpl.getStudentDAO();
+		IStudentDAO studentDAO=StudentDAOImpl.getInstance();
 		StatusVO statusVO=studentDAO.createStudent(studentVO);
 		return statusVO;
 	}
-	public  Map<String,Object> getStudentById(String regno)
+	public  Map<String,Object> getStudentById(String studentId)
 	{
-		StudentDAOImpl studentDAO=StudentDAOImpl.getStudentDAO();
-		Map<String,Object> map=studentDAO.getStudentById(regno);
+		IStudentDAO studentDAO=StudentDAOImpl.getInstance();
+		Map<String,Object> map=studentDAO.getStudentById(studentId);
 		return map;
 		
 	}
 	public  StatusVO updateStudent(StudentVO studentVO){
-		StudentDAOImpl studentDAO=StudentDAOImpl.getStudentDAO();
+		IStudentDAO studentDAO=StudentDAOImpl.getInstance();
 		StatusVO statusVO=studentDAO.updateStudent(studentVO);
 		return statusVO;
 	}
-	public  StatusVO deleteStudent(String regno){
-		StudentDAOImpl studentDAO=StudentDAOImpl.getStudentDAO();
-		StatusVO statusVO=studentDAO.deleteStudent(regno);
+	public  StatusVO deleteStudent(String studentId){
+		IStudentDAO studentDAO=StudentDAOImpl.getInstance();
+		StatusVO statusVO=studentDAO.deleteStudent(studentId);
 		return statusVO;
 	}
 	public  Map<String,Object> getAllStudents(){
-		StudentDAOImpl studentDAO=StudentDAOImpl.getStudentDAO();
+		IStudentDAO studentDAO=StudentDAOImpl.getInstance();
 		Map<String,Object> map=studentDAO.getAllStudents();
 		return map;
 	}

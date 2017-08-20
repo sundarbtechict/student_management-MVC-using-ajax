@@ -12,8 +12,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.sundar.studentmanagement.student.vo.StatusVO;
 import com.sundar.studentmanagement.student.vo.StudentVO;
+import com.sundar.studentmanagement.student.service.IStudentService;
 import com.sundar.studentmanagement.student.service.StudentServiceImpl;
 
 /**
@@ -21,6 +24,8 @@ import com.sundar.studentmanagement.student.service.StudentServiceImpl;
  */
 public class GetAllModulesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
+	private static final Logger LOGGER = Logger.getLogger(GetAllModulesServlet.class);
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -36,24 +41,15 @@ public class GetAllModulesServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		
-		StudentServiceImpl s = StudentServiceImpl.getStudentService();
-		Map<String, Object> map = s.getAllStudents();
-		@SuppressWarnings("unchecked")
-		List<StudentVO> studentList = (List<StudentVO>) map.get("StudentList");
-		StatusVO statusVO = (StatusVO) map.get("StatusVO");
-		request.setAttribute("studentList", studentList);
-		if (statusVO.getStatusCode() == "Problems")
-			request.setAttribute("status", statusVO);
-		else {
-			StatusVO statusVO2 = (StatusVO) request.getAttribute("status");
-			request.setAttribute("status", statusVO2);
-		}
+		LOGGER.info("-----------------getAllModules---------------------");
 
 		ServletContext context = getServletContext();
 		RequestDispatcher rd = context.getRequestDispatcher("/jsp/common/getAllModules.jsp");
 		rd.forward(request, response);
+		
+		LOGGER.info("-----------------/getAllModules---------------------");
+
 	}
 
 	/**
